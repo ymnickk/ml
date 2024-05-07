@@ -36,9 +36,8 @@ def get_predictions():
         feature_names = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT']
 
         feature_names_unique_validate = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT']
-        for feature in feature_names:
-            if feature not in feature_names_unique_validate:
-                input_data[feature] = st.number_input(f"{feature_names_ru.get(feature)}", min_value=0, value=10)
+        for feature in feature_names_unique_validate:
+            input_data[feature] = st.number_input(f"{feature_names_ru.get(feature)}", min_value=0, value=10)
 
 
 
