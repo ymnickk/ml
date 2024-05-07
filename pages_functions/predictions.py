@@ -45,13 +45,13 @@ def get_predictions():
         if st.button('Сделать предсказание'):
             model1, model2, model3, model4, model5, model6 = get_models()
             input_df = pd.DataFrame([input_data])
-            input_df[1] = [0]
-            input_df[2] = [0]
-            input_df[3] = [0]
-            input_df[4] = [0]
-            input_df[5] = [0]
-            input_df[6] = [0]
-            input_df[7] = [0]
+            input_df[1] = [10]
+            input_df[2] = [10]
+            input_df[3] = [10]
+            input_df[4] = [10]
+            input_df[5] = [10]
+            input_df[6] = [10]
+            input_df[7] = [10]
             st.write("Входные данные:", input_df)
 
             # Сделать предсказания на тестовых данных
