@@ -31,11 +31,18 @@ def get_predictions():
             'NC1.0': 'Введите NC1.0: ',
             'NC2.5': 'Введите NC2.5: ',
             'CNT': 'Введите CNT: ',
+            'CNT1': 'Введите CNT: ',
+            'CNT2': 'Введите CNT: ',
+            'CNT3': 'Введите CNT: ',
+            'CNT4': 'Введите CNT: ',
+            'CNT5': 'Введите CNT: ',
+            'CNT6': 'Введите CNT: ',
+            'CNT7': 'Введите CNT: ',
         }
 
         feature_names = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT']
 
-        feature_names_unique_validate = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT']
+        feature_names_unique_validate = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT', 'CNT1', 'CNT2', 'CNT3', 'CNT4', 'CNT5', 'CNT6', 'CNT7']
         for feature in feature_names_unique_validate:
             input_data[feature] = st.number_input(f"{feature_names_ru.get(feature)}", min_value=0, value=10)
 
@@ -44,15 +51,7 @@ def get_predictions():
 
         if st.button('Сделать предсказание'):
             model1, model2, model3, model4, model5, model6 = get_models()
-            input_df = pd.DataFrame({'Temperature[C]': [10],
-                            'Humidity[%]': [10],'TVOC[ppb]':[10],'eCO2[ppm]':[10],'Raw H2':[10],'Raw Ethanol':[10],'Pressure[hPa]':[10],'PM1.0':[10],'PM2.5':[10],'NC0.5':[10],'NC1.0':[10],'NC2.5':[10],'CNT':[10],'CNT1':[10],'CNT2':[10],'CNT3':[10],'CNT4':[10],'CNT5':[10],'CNT6':[10],'CNT7':[10]})
-            ##input_df[1] = [0]
-            #input_df[2] = [0]
-            #input_df[3] = [0]
-            #input_df[4] = [0]
-            #input_df[5] = [0]
-            #input_df[6] = [0]
-            #input_df[7] = [0]
+            input_df = pd.DataFrame([input_data])
             st.write("Входные данные:", input_df)
 
             # Сделать предсказания на тестовых данных
