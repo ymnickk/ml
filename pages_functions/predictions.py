@@ -31,16 +31,16 @@ def get_predictions():
             'NC1.0': 'Введите NC1.0: ',
             'NC2.5': 'Введите NC2.5: ',
             'CNT': 'Введите CNT: ',
-            'CNT1': 'Введите CNT: ',
-            'CNT2': 'Введите CNT: ',
-            'CNT3': 'Введите CNT: ',
-            'CNT4': 'Введите CNT: ',
-            'CNT5': 'Введите CNT: ',
-            'CNT6': 'Введите CNT: ',
-            'CNT7': 'Введите CNT: ',
+            'CNT1': 'Введите CNT1: ',
+            'CNT2': 'Введите CNT2: ',
+            'CNT3': 'Введите CNT3: ',
+            'CNT4': 'Введите CNT4: ',
+            'CNT5': 'Введите CNT5: ',
+            'CNT6': 'Введите CNT6: ',
+            'CNT7': 'Введите CNT7: ',
         }
 
-        feature_names = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT']
+        feature_names = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT', 'CNT1', 'CNT2', 'CNT3', 'CNT4', 'CNT5', 'CNT6', 'CNT7']
 
         feature_names_unique_validate = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT', 'CNT1', 'CNT2', 'CNT3', 'CNT4', 'CNT5', 'CNT6', 'CNT7']
         for feature in feature_names_unique_validate:
