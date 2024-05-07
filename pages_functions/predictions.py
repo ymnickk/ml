@@ -29,7 +29,7 @@ def get_predictions():
             'PM2.5': 'Введите PM2.5: ',
             'NC0.5': 'Введите NC0.5: ',
             'NC1.0': 'Введите NC1.0: ',
-            'NC2.5': 'NC2.5: ',
+            'NC2.5': 'Введите NC2.5: ',
             'CNT': 'Введите CNT: ',
         }
 
@@ -45,6 +45,13 @@ def get_predictions():
         if st.button('Сделать предсказание'):
             model1, model2, model3, model4, model5, model6 = get_models()
             input_df = pd.DataFrame([input_data])
+            input_df[1] = [0]
+            input_df[2] = [0]
+            input_df[3] = [0]
+            input_df[4] = [0]
+            input_df[5] = [0]
+            input_df[6] = [0]
+            input_df[7] = [0]
             st.write("Входные данные:", input_df)
 
             # Сделать предсказания на тестовых данных
