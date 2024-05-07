@@ -7,7 +7,7 @@ from pandas.plotting import scatter_matrix
 
 
 def get_visualizations():
-    numeric_features = ['MinTemp', 'MaxTemp', 'Rainfall', 'Evaporation', 'Sunshine', 'WindGustSpeed', 'WindSpeed9am', 'WindSpeed3pm', 'Humidity9am', 'Humidity3pm', 'Pressure9am', 'Pressure3pm', 'Cloud9am', 'Cloud3pm', 'Temp9am', 'Temp3pm', 'Year', 'Month', 'Day']
+    numeric_features = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT']
 
     st.subheader("Тепловая карта корреляции")
     fig_heatmap, ax_heatmap = plt.subplots(figsize=(14, 11))
@@ -17,33 +17,34 @@ def get_visualizations():
     st.image("heatmap.png")
 
     st.subheader("Гистограммы")
-    for feature in ['Rainfall', 'Evaporation', 'WindSpeed9am', 'WindSpeed3pm']:
+    for feature in ['Temperature[C]', 'Humidity[%]']:
         fig_hist = plt.figure()
         sns.histplot(data=df, x=feature, kde=True)
         plt.title(f"Гистограмма для {feature}")
         plt.savefig(f"hist_{feature}.png")
         st.image(f"hist_{feature}.png")
 
-    st.subheader("Боксплоты №1")
+    st.subheader("Боксплоты")
     fig_boxplot, ax_boxplot = plt.subplots(figsize=(12, 8))
-    sns.boxplot(data=df[numeric_features[0:9]], ax=ax_boxplot)
+    sns.boxplot(data=df[numeric_features[0:6]], ax=ax_boxplot)
     plt.title("Боксплоты для числовых признаков")
     plt.savefig("boxplot.png")
     st.image("boxplot.png")
 
-    st.subheader("Боксплоты №2")
+    st.subheader("Боксплоты")
     fig_boxplot, ax_boxplot = plt.subplots(figsize=(12, 8))
-    sns.boxplot(data=df[numeric_features[9:18]], ax=ax_boxplot)
+    sns.boxplot(data=df[numeric_features[6:12]], ax=ax_boxplot)
     plt.title("Боксплоты для числовых признаков")
-    plt.savefig("boxplot_1.png")
-    st.image("boxplot_1.png")
+    plt.savefig("boxplot1.png")
+    st.image("boxplot1.png")
 
-    st.subheader("Матрица диаграмм рассеяния №1")
-    scatter_matrix_fig = scatter_matrix(df[numeric_features[0:9]], figsize=(12, 12), alpha=0.8, diagonal='hist')
+    st.subheader("Матрица диаграмм рассеяния")
+    scatter_matrix_fig = scatter_matrix(df[numeric_features[0:6]], figsize=(12, 12), alpha=0.8, diagonal='hist')
     plt.savefig("scatter_matrix.png")
     st.image("scatter_matrix.png")
 
-    st.subheader("Матрица диаграмм рассеяния №2")
-    scatter_matrix_fig = scatter_matrix(df[numeric_features[9:18]], figsize=(12, 12), alpha=0.8, diagonal='hist')
-    plt.savefig("scatter_matrix.png")
-    st.image("scatter_matrix.png")
+    st.subheader("Матрица диаграмм рассеяния")
+    scatter_matrix_fig = scatter_matrix(df[numeric_features[6:12]], figsize=(12, 12), alpha=0.8, diagonal='hist')
+    plt.savefig("scatter_matrix1.png")
+    st.image("scatter_matrix1.png")
+

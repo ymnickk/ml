@@ -18,45 +18,24 @@ def get_predictions():
         input_data = {}
 
         feature_names_ru = {
-            'MinTemp': 'Введите минимальную температуру в выбранный день: ',
-            'MaxTemp': 'Введите максимальную температуру в выбранный день: ',
-            'Rainfall': 'Введите количество осадков, выпавших за выбранный день (мм): ',
-            'Evaporation': 'Введите количество испарений в поддоне класса А (мм) за 24 часа до 9 утра выбранного дня: ',
-            'Sunshine': 'Введите количество часов яркого солнечного света в течение выбранного дня: ',
-            'WindSpeed9am': 'Введите скорость ветра в 9 утра выбранного дня (км/ч): ',
-            'WindSpeed3pm': 'Введите скорость ветра в 3 часа  после полудня выбранного дня (км/ч): ',
-            'WindGustSpeed': 'Введите скорость самого сильного порыва ветра за 24 часа до полуночи выбранного дня (км/ч): ',
-            'Humidity9am': 'Введите влажность в 9 утра выбранного дня (г/м3): ',
-            'Humidity3pm': 'Введите влажность в 3 часа после полудня выбранного дня (г/м3): ',
-            'Pressure9am': 'Введите давление в 9 утра выбранного дня (Па): ',
-            'Pressure3pm': 'Введите давление в 3 часа после полудня выбранного дня (Па): ',
-            'Cloud9am': 'Введите облачность в 9 утра выбранного дня (в % разделённых на 100): ',
-            'Cloud3pm': 'Введите облачность в 3 часа после полудня выбранного дня (в % разделённых на 100): ',
-            'Temp9am': 'Введите температуру в 9 утра выбранного дня: ',
-            'Temp3pm': 'Введите температуру в 3 часа после полудня выбранного дня: ',
-            'RainToday': 'Введите, был ли сегодня дождь или нет(1 - да, 0 - нет): ',
-            'Year': 'Введите текущий год: ',
-            'Month': 'Введите текущий месяц: ',
-            'Day': 'Введите текущий день: ',
+            'Temperature[C]': 'Введите температуру в градусах Цельсия: ',
+            'Humidity[%]': 'Введите влажность в процентах: ',
+            'TVOC[ppb]': 'Введите концентрацию летучих органических соединений в частицах на миллиард (ppb): ',
+            'eCO2[ppm]': 'Введите концентрацию диоксида углерода в частицах на миллион (ppm): ',
+            'Raw H2': 'Введите сырые данные о содержании водорода: ',
+            'Raw Ethanol': 'Введите сырые данные о содержании этанола: ',
+            'Pressure[hPa]': 'Введите давление в гектопаскалях (гПа): ',
+            'PM1.0': 'Введите PM1.0: ',
+            'PM2.5': 'Введите PM2.5: ',
+            'NC0.5': 'Введите NC0.5: ',
+            'NC1.0': 'Введите NC1.0: ',
+            'NC2.5': 'NC2.5: ',
+            'CNT': 'Введите CNT: ',
         }
 
-        feature_names = ['MinTemp', 'MaxTemp', 'Rainfall', 'Evaporation', 'Sunshine', 'WindSpeed9am', 'WindSpeed3pm',
-                         'WindGustSpeed', 'Humidity9am', 'Humidity3pm', 'Pressure9am', 'Pressure3pm', 'Cloud9am',
-                         'Cloud3pm', 'Temp9am', 'Temp3pm', 'RainToday', 'Year', 'Month', 'Day']
+        feature_names = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT']
 
-        input_data['Year'] = st.number_input(feature_names_ru.get('Year'), min_value=2000, max_value=2024, value=2024, step=1)
-        input_data['Month'] = st.number_input(feature_names_ru.get('Month'), min_value=1, max_value=12, value=1, step=1)
-        input_data['Day'] = st.number_input(feature_names_ru.get('Day'), min_value=1, max_value=31, value=15, step=1)
-        input_data['RainToday'] = st.number_input(feature_names_ru.get('RainToday'), min_value=0, max_value=1, value=0, step=1)
-        input_data['Rainfall'] = st.number_input(feature_names_ru.get('Rainfall'), min_value=0.0, value=0.0)
-        input_data['MinTemp'] = st.number_input(feature_names_ru.get('MinTemp'), value=0)
-        input_data['MaxTemp'] = st.number_input(feature_names_ru.get('MaxTemp'), value=0)
-        input_data['Temp9am'] = st.number_input(feature_names_ru.get('Temp9am'), value=0)
-        input_data['Temp3pm'] = st.number_input(feature_names_ru.get('Temp3pm'), value=0)
-        input_data['Evaporation'] = st.number_input(feature_names_ru.get('Evaporation'), min_value=0.0, value=0.0)
-
-        feature_names_unique_validate = ['RainToday', 'Year', 'Month', 'Day', 'Rainfall', 'MinTemp', 'MaxTemp',
-                                         'Temp9am', 'Temp3pm']
+        feature_names_unique_validate = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT']
         for feature in feature_names:
             if feature not in feature_names_unique_validate:
                 input_data[feature] = st.number_input(f"{feature_names_ru.get(feature)}", min_value=0, value=10)
@@ -78,12 +57,12 @@ def get_predictions():
             probabilities_ml6 = model6.predict(input_df)
             predictions_ml6 = np.argmax(probabilities_ml6, axis=1)
 
-            st.success(f"По предсказанию 1-й модели {'завтра будет дождь' if predictions_ml1 == 1 else 'завтра не будет дождя'}")
-            st.success(f"По предсказанию 2-й модели {'завтра будет дождь' if predictions_ml2 == 1 else 'завтра не будет дождя'}")
-            st.success(f"По предсказанию 3-й модели {'завтра будет дождь' if predictions_ml3 == 1 else 'завтра не будет дождя'}")
-            st.success(f"По предсказанию 4-й модели {'завтра будет дождь' if predictions_ml4 == 1 else 'завтра не будет дождя'}")
-            st.success(f"По предсказанию 5-й модели {'завтра будет дождь' if predictions_ml5 == 1 else 'завтра не будет дождя'}")
-            st.success(f"По предсказанию 6-й модели {'завтра будет дождь' if predictions_ml6 == 1 else 'завтра не будет дождя'}")
+            st.success(f"По предсказанию 1-й модели {'сработала сигнализация' if predictions_ml1 == 1 else 'не сработала сигнализация'}")
+            st.success(f"По предсказанию 2-й модели {'сработала сигнализация' if predictions_ml2 == 1 else 'не сработала сигнализация'}")
+            st.success(f"По предсказанию 3-й модели {'сработала сигнализация' if predictions_ml3 == 1 else 'не сработала сигнализация'}")
+            st.success(f"По предсказанию 4-й модели {'сработала сигнализация' if predictions_ml4 == 1 else 'не сработала сигнализация'}")
+            st.success(f"По предсказанию 5-й модели {'сработала сигнализация' if predictions_ml5 == 1 else 'не сработала сигнализация'}")
+            st.success(f"По предсказанию 6-й модели {'сработала сигнализация' if predictions_ml6 == 1 else 'не сработала сигнализация'}")
             st.success(f"Более подробная информация: ")
 
             st.success(f"Предсказанние LogisticRegression: {predictions_ml1}")

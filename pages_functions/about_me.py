@@ -9,5 +9,5 @@ def get_about_me():
     with col1:
         st.image("images/me.jpg", width=170)
     with col2:
-        st.write("Евтушевский Максим Сергеевич")
+        st.write("Задорожный Александр Александрович")
         st.write("ФИТ-221")
