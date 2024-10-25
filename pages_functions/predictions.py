@@ -31,13 +31,13 @@ def get_predictions():
             'NC1.0': 'Введите NC1.0: ',
             'NC2.5': 'Введите NC2.5: ',
             'CNT': 'Введите CNT: ',
-            'CNT1': 'Введите CNT1: ',
-            'CNT2': 'Введите CNT2: ',
-            'CNT3': 'Введите CNT3: ',
-            'CNT4': 'Введите CNT4: ',
-            'CNT5': 'Введите CNT5: ',
-            'CNT6': 'Введите CNT6: ',
-            'CNT7': 'Введите CNT7: ',
+            'NC3.0': 'Введите NC3.0: ',
+            'PM0.5': 'Введите PM0.5: ',
+            'NC2.0': 'Введите NC2.0: ',
+            'PM1.5': 'Введите PM1.5: ',
+            'PM2.0': 'Введите PM2.0: ',
+            'PM3.0': 'Введите PM3.0: ',
+            'PM3.5': 'Введите PM3.5: ',
         }
 
         feature_names = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT', 'CNT1', 'CNT2', 'CNT3', 'CNT4', 'CNT5', 'CNT6', 'CNT7']
