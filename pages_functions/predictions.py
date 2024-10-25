@@ -40,9 +40,9 @@ def get_predictions():
             'PM3.5': 'Введите PM3.5: ',
         }
 
-        feature_names = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT', 'CNT1', 'CNT2', 'CNT3', 'CNT4', 'CNT5', 'CNT6', 'CNT7']
+        feature_names = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT', 'NC3.0', 'PM0.5', 'NC2.0', 'PM1.5', 'PM2.0', 'PM3.0', 'PM3.5']
 
-        feature_names_unique_validate = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT', 'CNT1', 'CNT2', 'CNT3', 'CNT4', 'CNT5', 'CNT6', 'CNT7']
+        feature_names_unique_validate = ['Temperature[C]', 'Humidity[%]', 'TVOC[ppb]', 'eCO2[ppm]', 'Raw H2', 'Raw Ethanol', 'Pressure[hPa]', 'PM1.0', 'PM2.5', 'NC0.5', 'NC1.0', 'NC2.5', 'CNT', 'NC3.0', 'PM0.5', 'NC2.0', 'PM1.5', 'PM2.0', 'PM3.0', 'PM3.5']
         for feature in feature_names_unique_validate:
             input_data[feature] = st.number_input(f"{feature_names_ru.get(feature)}", min_value=0, value=10)
 
